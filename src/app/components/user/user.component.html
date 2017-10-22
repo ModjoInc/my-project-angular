@@ -1,0 +1,46 @@
+<div class="jumbotron">
+<h2>
+  Hello! my name is {{ name }}
+</h2>
+</div>
+<p>I am {{ age }} old</p>
+<p>I live in {{ address.country }} </p>
+<button (click)="onClick()">Click Me </button>
+<button (click)="toggleEdit()">Edit User </button>
+<div *ngIf=isEdit>
+<h1>Edit Users</h1>
+<form>
+  <div>
+    <label for="name">Name: </label>
+    <input type="text" [(ngModel)]="name" name="name">
+  </div>
+  <div>
+    <label for="Age">Age: </label>
+    <input type="text" name="age" [(ngModel)]="age">
+  </div>
+  <div>
+    <label for="country">country: </label>
+    <input type="text" name="country" [(ngModel)]="address.country">
+  </div>
+</form>
+</div>
+
+<h1>Edit Hobbies</h1>
+<form (submit)="addHobby(hobby.value)">
+  <label for="hobby">Hobby: </label>
+  <input type="text" name="hobby" #hobby>
+</form>
+<h4>Loisirs</h4>
+<ul>
+  <li *ngFor='let hobby Of hobbies; let i = index' >
+   {{ i + 1 }} {{ hobby }} <button (click)="deleteHobby(hobby)" > X </button>
+  </li>  
+</ul>
+
+<h1>Posts</h1>
+<div *ngFor="let post of posts">
+  <h4> {{ post.title }} </h4>
+  <p> {{ post.body }} </p>
+  <small>Posted by : {{ post.userId }} </small>
+
+</div>
